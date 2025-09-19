@@ -95,7 +95,9 @@ const Dragonwrldprogcard = ({ adv }) => {
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() =>
-                  dragonwrldnavigation.navigate('Dragonworldclrngscr', adv)
+                  dragonwrldnavigation.navigate('Dragonworldclrngscr', {
+                    seladv: adv,
+                  })
                 }
                 style={{
                   flexDirection: 'row',

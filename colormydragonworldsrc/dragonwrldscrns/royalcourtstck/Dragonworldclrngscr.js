@@ -22,9 +22,10 @@ import { useDragonWorldContext } from '../../dragonworldstr/dragonworldcntx';
 
 const Dragonworldclrngscr = ({ route }) => {
   const seldragonpnt = route.params;
+  const { seladv } = route.params;
   const dragonworldnavigation = useNavigation();
   const [paths, setPaths] = useState(
-    seldragonpnt.paths || [{ d: '', color: '#a205f0ff' }],
+    seladv?.paths || [{ d: '', color: '#a205f0ff' }],
   );
   const [shwDragonModal, setShwDragonModal] = useState(false);
   const [isCmplDragonPnt, setIsCmplDragonPnt] = useState(false);
@@ -39,18 +40,19 @@ const Dragonworldclrngscr = ({ route }) => {
   const [number, setNumber] = useState(null);
 
   const handleSaveDragonWrldDrawing = dragonKEY => {
-    if (paths.length === 0) return;
-
     const newDrawing = {
       paths,
-      dragonimgbg: seldragonpnt.dragonwrldimsl,
-      dragonname: seldragonpnt.dragonwrldttl,
+      dragonimgbg: seldragonpnt.dragonwrldimsl || seladv.dragonimgbg,
+      dragonname: seldragonpnt.dragonwrldttl || seladv.dragonname,
       id: Date.now(),
       number,
     };
 
-    saveDragonWorldDrawing(dragonKEY, newDrawing);
-    setPaths([]);
+    if (seladv) {
+      saveDragonWorldDrawing(dragonKEY, newDrawing, seladv);
+    } else saveDragonWorldDrawing(dragonKEY, newDrawing);
+
+    // setPaths([]);
   };
 
   const generateRandomNumber = () => {
@@ -108,11 +110,7 @@ const Dragonworldclrngscr = ({ route }) => {
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => {
-            if (seldragonpnt.paths) {
-              dragonworldnavigation.popToTop();
-            } else {
-              setShwDragonModal(true);
-            }
+            setShwDragonModal(true);
           }}
         >
           <ImageBackground
@@ -125,7 +123,7 @@ const Dragonworldclrngscr = ({ route }) => {
           </ImageBackground>
         </TouchableOpacity>
 
-        {!seldragonpnt.paths && (
+        {!seladv && (
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => {
@@ -154,7 +152,7 @@ const Dragonworldclrngscr = ({ route }) => {
             }}
           >
             <Image
-              source={seldragonpnt.dragonimgbg || seldragonpnt.dragonwrldimsl}
+              source={seladv?.dragonimgbg || seldragonpnt.dragonwrldimsl}
               style={[styles.backgroundImage, { opacity }]}
               resizeMode="cover"
             />
@@ -390,9 +388,12 @@ const Dragonworldclrngscr = ({ route }) => {
                       } else {
                         handleSaveDragonWrldDrawing(
                           'dragonworldinprogressdrawings',
+                          seladv,
                         );
-                        setShwDragonModal(false);
-                        dragonworldnavigation.popToTop();
+                        setTimeout(() => {
+                          setShwDragonModal(false);
+                          dragonworldnavigation.popToTop();
+                        }, 300);
                       }
                     }}
                   >

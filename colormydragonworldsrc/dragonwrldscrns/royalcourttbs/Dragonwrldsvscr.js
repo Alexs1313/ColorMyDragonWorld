@@ -7,7 +7,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Dragongrdtxt } from '../../dragonwrldcmpnts/Dragongrdtxt';
 import Dragonwrlddncard from '../../dragonwrldcmpnts/Dragonwrlddncard';
 import Dragonwrldprogcard from '../../dragonwrldcmpnts/Dragonwrldprogcard';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Dragonwrldsvscr = () => {
   const {

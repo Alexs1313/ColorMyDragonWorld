@@ -8,7 +8,6 @@ import { Dragongrdtxt } from '../../dragonwrldcmpnts/Dragongrdtxt';
 const dragonworldpnts = [
   {
     dragonwrldttl: 'Turtle',
-    dragonwrldct: 'Advice from the King',
     dragonwrldim: require('../../../assets/images/dragonworldim1.png'),
     dragonwrldimsl: require('../../../assets/images/dragonworldtt.png'),
     dragonwrlddes:
@@ -16,7 +15,6 @@ const dragonworldpnts = [
   },
   {
     dragonwrldttl: 'Goldfish',
-    dragonwrldct: 'Advice from the Prince',
     dragonwrldim: require('../../../assets/images/dragonworldim2.png'),
     dragonwrldimsl: require('../../../assets/images/dragonworldfsh.png'),
     dragonwrlddes:
@@ -24,7 +22,6 @@ const dragonworldpnts = [
   },
   {
     dragonwrldttl: 'Bat',
-    dragonwrldct: 'Advice from the Queen',
     dragonwrldim: require('../../../assets/images/dragonworldim3.png'),
     dragonwrldimsl: require('../../../assets/images/dragonworldbt.png'),
     dragonwrlddes:
@@ -32,7 +29,6 @@ const dragonworldpnts = [
   },
   {
     dragonwrldttl: 'Dragon',
-    dragonwrldct: 'Advice from the Jester',
     dragonwrldim: require('../../../assets/images/dragonworldim4.png'),
     dragonwrldimsl: require('../../../assets/images/dragonworlddr.png'),
     dragonwrlddes:
