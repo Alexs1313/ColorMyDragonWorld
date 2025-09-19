@@ -33,7 +33,9 @@ const Dragonwrlddtls = ({ route }) => {
 
   const handleDelDragonWrldDrawing = (dragonKEY, drag) => {
     deleteDragonWorldDrawing(dragonKEY, drag);
-    dragonworldnavigation.popToTop();
+    setTimeout(() => {
+      dragonworldnavigation.popToTop();
+    }, 400);
     setShowDragonWrldAlert(false);
   };
 
@@ -135,7 +137,7 @@ const Dragonwrlddtls = ({ route }) => {
               >
                 <ImageBackground
                   source={seldragonpnt.dragonimgbg}
-                  style={{ width: 373, height: 302 }}
+                  style={{ width: 373, height: 342 }}
                 >
                   <Svg width="100%" height="100%" viewBox="42 95 390 340">
                     {seldragonpnt.paths?.map((d, i) => (

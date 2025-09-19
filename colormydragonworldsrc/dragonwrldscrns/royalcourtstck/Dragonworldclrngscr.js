@@ -107,7 +107,13 @@ const Dragonworldclrngscr = ({ route }) => {
       >
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => setShwDragonModal(true)}
+          onPress={() => {
+            if (seldragonpnt.paths) {
+              dragonworldnavigation.popToTop();
+            } else {
+              setShwDragonModal(true);
+            }
+          }}
         >
           <ImageBackground
             source={require('../../../assets/images/dragonworldroundbtn.png')}
@@ -119,22 +125,24 @@ const Dragonworldclrngscr = ({ route }) => {
           </ImageBackground>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => {
-            setShwDragonModal(true), setIsCmplDragonPnt(true);
-            generateRandomNumber();
-          }}
-        >
-          <ImageBackground
-            source={require('../../../assets/images/dragonworldroundbtn.png')}
-            style={styles.dragonworldbt}
+        {!seldragonpnt.paths && (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => {
+              setShwDragonModal(true), setIsCmplDragonPnt(true);
+              generateRandomNumber();
+            }}
           >
-            <Image
-              source={require('../../../assets/images/dragonworldldcheck.png')}
-            />
-          </ImageBackground>
-        </TouchableOpacity>
+            <ImageBackground
+              source={require('../../../assets/images/dragonworldroundbtn.png')}
+              style={styles.dragonworldbt}
+            >
+              <Image
+                source={require('../../../assets/images/dragonworldldcheck.png')}
+              />
+            </ImageBackground>
+          </TouchableOpacity>
+        )}
       </View>
 
       <View style={styles.drawContainer}>
