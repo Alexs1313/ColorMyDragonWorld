@@ -1,45 +1,25 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { NavigationContainer as DragonWrldAppNavigationContainer } from '@react-navigation/native';
+import Dragonworldstck from './colormydragonworldsrc/dragonwrldnav/Dragonworldstck';
+import { DragonCtxProvider } from './colormydragonworldsrc/dragonworldstr/dragonworldcntx';
+import { useEffect, useState } from 'react';
+import Dragonworldloader from './colormydragonworldsrc/dragonwrldcmpnts/Dragonworldloader';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+const App = () => {
+  const [isVsblDragonWorldStack, setIsVsblDragonWorldStack] = useState(false);
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  useEffect(() => {
+    setTimeout(() => {
+      setIsVsblDragonWorldStack(true);
+    }, 5000);
+  }, []);
 
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <DragonWrldAppNavigationContainer>
+      <DragonCtxProvider>
+        {isVsblDragonWorldStack ? <Dragonworldstck /> : <Dragonworldloader />}
+      </DragonCtxProvider>
+    </DragonWrldAppNavigationContainer>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
