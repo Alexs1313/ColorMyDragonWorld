@@ -473,7 +473,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     opacity: 0.5,
     width: 373,
-    height: 302,
+    height: 342,
   },
   dragonwrldbck: {
     fontFamily: 'SuezOne-Regular',
